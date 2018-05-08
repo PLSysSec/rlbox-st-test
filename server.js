@@ -1,8 +1,10 @@
 const st = require('st')
 const http = require('http')
  
-http.createServer(
-  st( { path: __dirname + '/static'
+mount = st( { path: __dirname + '/static'
       , cache : { content: false }
       })
-).listen(1337)
+http.createServer(function(req, res){
+	console.log('Got a request');
+    mount(req, res);
+}).listen(1337)
