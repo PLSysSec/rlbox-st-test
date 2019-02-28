@@ -7,7 +7,7 @@ app.use(express.static('static'))
 function mkImages(nr) {
   let str = "";
   for(let i = 0; i < nr; i++) {
-    str += `<img with="10px" height="10px" src="http://host${i}.localhost:1337/img.jpeg"/>\n`;
+    str += `<img with="10px" height="10px" src="http://host${i}.total${nr}.scaling.localhost:1337/img.jpeg"/>\n`;
   }
   return str;
 }
