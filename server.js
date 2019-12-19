@@ -4,10 +4,10 @@ const app = express()
 
 app.use(express.static('static'))
 
-function mkImages(nr) {
+function mkImages(nr, imgName) {
   let str = "";
   for(let i = 0; i < nr; i++) {
-    str += `<img width=60 src="http://host${i}.total${nr}.scaling.localhost:1337/img_small.jpeg"/>\n`;
+    str += `<img width=60 src="http://host${i}.total${nr}.scaling.localhost:1337/${imgName}"/>\n`;
   }
   return str;
 }
@@ -15,10 +15,18 @@ function mkImages(nr) {
 app.get('/jpeg-test', function (req, res) {
   const nrImages =  req.query.nr || 10;
   res.send(`<html><head></head><body>
-    ${mkImages(nrImages)}
+    ${mkImages(nrImages, "image_small.jpeg")}
+    </body></html>`);
+})
+
+app.get('/jpeg-test-large', function (req, res) {
+  const nrImages =  req.query.nr || 10;
+  res.send(`<html><head></head><body>
+    ${mkImages(nrImages, "image_large.jpeg")}
     </body></html>`);
 })
  
 app.listen(1337)
 // http://localhost:1337/ - zlib test
-// http://localhost:1337/jpeg-test?nr=1500 - sandbox scaling test
+// http://localhost:1337/jpeg-test?nr=15 - sandbox scaling test
+// http://localhost:1337/jpeg-test-large?nr=15 - sandbox scaling test
