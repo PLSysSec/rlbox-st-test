@@ -15,14 +15,14 @@ function mkImages(nr, imgName) {
 app.get('/jpeg-test', function (req, res) {
   const nrImages =  req.query.nr || 10;
   res.send(`<html><head></head><body>
-    ${mkImages(nrImages, "image_small.jpeg")}
+    ${mkImages(nrImages, "img_small.jpeg")}
     </body></html>`);
 })
 
 app.get('/jpeg-test-large', function (req, res) {
   const nrImages =  req.query.nr || 10;
   res.send(`<html><head></head><body>
-    ${mkImages(nrImages, "image_large.jpeg")}
+    ${mkImages(nrImages, "img_large.jpeg")}
     </body></html>`);
 })
 
