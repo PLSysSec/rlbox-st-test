@@ -11,7 +11,7 @@ function mkImages(nr, imgName) {
   }
   return str;
 }
- 
+
 app.get('/jpeg-test', function (req, res) {
   const nrImages =  req.query.nr || 10;
   res.send(`<html><head></head><body>
@@ -25,8 +25,10 @@ app.get('/jpeg-test-large', function (req, res) {
     ${mkImages(nrImages, "image_large.jpeg")}
     </body></html>`);
 })
- 
+
 app.listen(1337)
+console.log("Started!")
+
 // http://localhost:1337/ - zlib test
 // http://localhost:1337/jpeg-test?nr=15 - sandbox scaling test
 // http://localhost:1337/jpeg-test-large?nr=15 - sandbox scaling test
